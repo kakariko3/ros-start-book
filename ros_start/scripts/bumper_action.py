@@ -28,7 +28,7 @@ class BumperAction(object):
                 self._action_server.set_preempted()
                 break
             if self._hit_bumper:
-                self.pub.publish(zero_vel)
+                self._pub.publish(zero_vel)
                 break
             else:
                 if goal.target_vel.linear.x > self._max_vel:
@@ -37,7 +37,7 @@ class BumperAction(object):
                 feedback = GoUntilBumperFeedback(current_vel=goal.target_vel)
                 self._action_server.publish_feedback(feedback)
             r.sleep()
-        result = GoUntilBumperResult(bumper_hit=set._hit_bumper)
+        result = GoUntilBumperResult(bumper_hit=self._hit_bumper)
         self._action_server.set_succeeded(result)
 
 if __name__ == '__main__':

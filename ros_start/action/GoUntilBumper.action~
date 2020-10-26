@@ -1,5 +1,5 @@
 geometry_msgs/Twist target_vel
-int32 timeout_sec
+int32 timeout_src
 ---
 bool bumper_hit
 ---
